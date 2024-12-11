@@ -1,0 +1,360 @@
+<html><head><base href="/">
+    <title>Resume - Portfolio Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #003140;
+            color: white;
+            perspective: 1000px;
+            min-height: 100vh;
+        }
+
+        .background-gif {
+            position: fixed;
+            top: 0;
+            left: 0;
+            
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.25;
+            mix-blend-mode: soft-light;
+            filter: saturate(1.5) contrast(1.3) brightness(0.9);
+        }
+
+        nav {
+            background: linear-gradient(45deg, rgba(0, 0, 0, 0.8), rgba(0, 180, 216, 0.3));
+            padding: 25px;
+            text-align: center;
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 30px;
+            font-size: 18px;
+            position: relative;
+            padding: 8px 15px;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00b4d8, transparent);
+            transition: width 0.4s ease;
+        }
+
+        nav a:hover {
+            color: #00b4d8;
+            text-shadow: 0 0 10px rgba(0, 180, 216, 0.5);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .resume-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(0, 180, 216, 0.1));
+            border-radius: 25px;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 180, 216, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 180, 216, 0.2);
+        }
+
+        .section h2 {
+            color: #00b4d8;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(0, 180, 216, 0.3);
+            padding-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .experience-item, .education-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover, .education-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.02);
+        }
+
+        .title {
+            font-size: 1.4em;
+            color: #00b4d8;
+            margin-bottom: 10px;
+        }
+
+        .company, .institution {
+            font-size: 1.1em;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 10px;
+        }
+
+        .date {
+            color: rgba(0, 180, 216, 0.8);
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .description {
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .skill {
+            background: linear-gradient(45deg, rgba(0, 180, 216, 0.3), rgba(0, 180, 216, 0.1));
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 180, 216, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .skill:hover {
+            transform: scale(1.1);
+            background: linear-gradient(45deg, rgba(0, 180, 216, 0.4), rgba(0, 180, 216, 0.2));
+            box-shadow: 0 5px 15px rgba(0, 180, 216, 0.3);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px;
+        }
+
+        .contact-item i {
+            color: #00b4d8;
+            font-size: 1.2em;
+        }
+
+        .section-vector {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            fill: #00b4d8;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .section-vector:hover {
+            transform: scale(1.1);
+            opacity: 1;
+            filter: drop-shadow(0 0 10px rgba(0, 180, 216, 0.5));
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 18px 40px;
+            background: linear-gradient(45deg, #00b4d8, #0096c7);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            margin-top: 35px;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(0, 180, 216, 0.4);
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .btn:hover {
+            background: linear-gradient(45deg, #bdc8cc, #00b4d8);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(0, 180, 216, 0.6);
+            letter-spacing: 2px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <img src="4.webp" class="background-gif" alt="Background Animation">
+    
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="resume.html">Resume</a>
+        <a href="biodata.html">Bio-Data</a>
+     
+    </nav>
+
+    <div class="resume-container">
+        <div class="section">
+            <div class="section-header">
+                <svg class="section-vector" viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg>
+                <h2>Professional Summary</h2>
+            </div>
+            <p class="description">Experienced web developer with a passion for creating innovative digital solutions. Skilled in frontend and backend development, with a strong focus on user experience and responsive design.</p>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <svg class="section-vector" viewBox="0 0 24 24">
+                    <path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-8-2h4v2h-4V4z"></path>
+                </svg>
+                <h2>Work Experience</h2>
+            </div>
+            <div class="experience-item">
+                <div class="title">Web Development Intern</div>
+                <div class="company">Bael Solutions</div>
+                <div class="date">2023 - 2024</div>
+                <p class="description">Assisting development team in creating responsive web applications. Implemented modern frontend frameworks and optimized application performance.</p>
+            </div>
+
+            <div class="experience-item">
+                <div class="title">React js/UI-UX Developer</div>
+                <div class="company">SenseGiz</div>
+                <div class="date">2024 - present</div>
+                <p class="description">Developed and maintained client websites. Collaborated with design team to implement innovative UI/UX solutions.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <svg class="section-vector" viewBox="0 0 24 24">
+                    <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9z"></path>
+                </svg>
+                <h2>Education</h2>
+            </div>
+            <div class="education-item">
+                <div class="title">Bachelor of Engineering in CSE</div>
+                <div class="institution">Maratha Mandal Engineering Collage</div>
+                <div class="date">2022- 2026</div>
+                <p class="description">Focused on web technologies and software development. Graduated with honors.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <svg class="section-vector" viewBox="0 0 24 24">
+                    <path d="M21.71 11.29l-9-9a.996.996 0 00-1.41 0l-9 9a.996.996 0 000 1.41l9 9c.39.39 1.02.39 1.41 0l9-9a.996.996 0 000-1.41zM14 14.5V12h-4v3H8v-4c0-.55.45-1 1-1h5V7.5l3.15 3.15c.2.2.2.51 0 .71L14 14.5z"></path>
+                </svg>
+                <h2>Skills</h2>
+            </div>
+            <div class="skills">
+                <div class="skill">HTML5</div>
+                <div class="skill">CSS3</div>
+                <div class="skill">JavaScript</div>
+                <div class="skill">React</div>
+                <div class="skill">Node.js</div>
+                <div class="skill">PHP</div>
+                <div class="skill">MySQL</div>
+                <div class="skill">Git</div>
+                <div class="skill">Responsive Design</div>
+                <div class="skill">UI/UX Design</div>
+            </div>
+        </div>
+        <a href="res.pdf" class="btn">View My Resume</a><br><br>
+        <div class="section">
+            <div class="section-header">
+                <svg class="section-vector" viewBox="0 0 24 24">
+                    <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"></path>
+                </svg>
+                <h2>Contact Information</h2>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>vinayakkolvankar281@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+91 9108689735</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Belagavi, Karnataka</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.section').hide().each(function(index) {
+                $(this).delay(200 * index).fadeIn(1000);
+            });
+
+            $('.experience-item, .education-item').hover(
+                function() {
+                    $(this).find('.title').css('color', '#fff');
+                },
+                function() {
+                    $(this).find('.title').css('color', '#00b4d8');
+                }
+            );
+
+            // Add animation for vectors
+            $('.section-vector').hover(
+                function() {
+                    $(this).css('transform', 'scale(1.1) rotate(10deg)');
+                },
+                function() {
+                    $(this).css('transform', 'scale(1) rotate(0deg)');
+                }
+            );
+        });
+    </script>
+</body></html>

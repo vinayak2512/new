@@ -1,0 +1,244 @@
+<html><head><base href="/">
+    <title>Portfolio Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #003140;
+            color: white;
+            perspective: 1000px;
+            min-height: 100vh;
+        }
+
+        .header {
+            padding: 70px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 180, 216, 0.2));
+            position: relative;
+            transform-style: preserve-3d;
+            margin-bottom: 40px;
+            border-bottom: 2px solid rgba(0, 180, 216, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .header h1 {
+            border-right: 4px solid #8dbcc4;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 4s steps(30, end), blink-caret 0.75s step-end infinite;
+            margin: 0 auto;
+            max-width: fit-content;
+            font-size: 3.8em;
+        
+            text-shadow: 2px 2px 10px rgba(213, 217, 218, 0.5),
+                         -2px -2px 10px rgba(255, 255, 255, 0.1);
+            letter-spacing: 2px;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #00b4d8 }
+        }
+
+        .background-gif {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.25;
+            mix-blend-mode: soft-light;
+            filter: saturate(1.5) contrast(1.3) brightness(0.9);
+        }
+
+        nav {
+            background: linear-gradient(45deg, rgba(0, 0, 0, 0.8), rgba(10, 10, 10, 0.3));
+            padding: 25px;
+            text-align: center;
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 30px;
+            font-size: 18px;
+            position: relative;
+            padding: 8px 15px;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00b4d8, transparent);
+            transition: width 0.4s ease;
+        }
+
+        nav a:hover {
+            color: #00b4d8;
+            text-shadow: 0 0 10px rgba(0, 180, 216, 0.5);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 50px;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(0, 180, 216, 0.1));
+            border-radius: 25px;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3),
+                        inset 0 0 20px rgba(0, 180, 216, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transform-style: preserve-3d;
+            transition: all 0.4s ease;
+        }
+
+        .content:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 180, 216, 0.3);
+        }
+
+        h1 {
+            font-size: 3.2em;
+            margin-bottom: 30px;
+            color: #dfe8ea;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3),
+                         -2px -2px 4px rgba(255, 255, 255, 0.1);
+            letter-spacing: 1px;
+        }
+
+        p {
+            line-height: 1.9;
+            margin-bottom: 25px;
+            font-size: 1.2em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .social-links {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .social-links a {
+            color: white;
+            margin: 0 25px;
+            font-size: 32px;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            display: inline-block;
+            text-shadow: 0 0 15px rgba(0, 180, 216, 0.5);
+        }
+
+        .social-links a:hover {
+            color: #00b4d8;
+            transform: scale(1.3) rotate(8deg);
+            text-shadow: 0 0 20px rgba(0, 180, 216, 0.8);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 18px 40px;
+            background: linear-gradient(45deg, #00b4d8, #0096c7);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            margin-top: 35px;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(0, 180, 216, 0.4);
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .btn:hover {
+            background: linear-gradient(45deg, #bdc8cc, #00b4d8);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(0, 180, 216, 0.6);
+            letter-spacing: 2px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <img src="2.webp" class="background-gif" alt="Background Animation">
+    
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="resume.html">Resume</a>
+        <a href="biodata.html">Bio-Data</a>
+       
+    </nav>
+
+    <div class="header">
+        <h1>Welcome to My Website</h1>
+    </div>
+
+    <div class="content">
+        <h1>Hello, I'm Vinayak</h1>
+        <p>I am a passionate web developer with expertise in creating modern and responsive websites. With a strong foundation in HTML, CSS, and JavaScript, I strive to build engaging user experiences that make a difference.</p>
+        
+        <p>This portfolio showcases my work and experience in the field of web development. Feel free to explore my resume and bio-data to learn more about my professional journey.</p>
+
+        
+
+        <div class="social-links">
+            <a href="https://linkedin.com"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com"><i class="fab fa-github"></i></a>
+            <a href="https://twitter.com"><i class="fab fa-twitter"></i></a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.content').hide().fadeIn(2000);
+            
+            $('nav a').hover(
+                function() {
+                    $(this).stop().animate({opacity: 0.7}, 300);
+                },
+                function() {
+                    $(this).stop().animate({opacity: 1}, 300);
+                }
+            );
+
+            $('.content').hover(
+                function() {
+                    $(this).css('transform', 'scale(1.02) translateY(-8px)');
+                },
+                function() {
+                    $(this).css('transform', 'scale(1) translateY(0)');
+                }
+            );
+        });
+    </script>
+</body></html>
